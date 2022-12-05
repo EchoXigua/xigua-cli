@@ -17,7 +17,8 @@ program
   .description('create a new project')  //描述信息
   .option('-f,--force', 'overwrite target directory if it exists')
   .action((name, cmd) => {
-    console.log(name, cmd);
+    //调用create模块去创建
+    require('../lib/create')(name, cmd)
   })
 
 
@@ -32,6 +33,15 @@ program
     console.log(value, cmd)
   })
 
+
+program
+  .command('ui')
+  .description('start and open xigua-cli ui')
+  .option('-p, --port <port>', 'port used for the UI Server')
+  .action((cmd) => {
+    //调用ui模块实现
+    console.log(cmd);
+  })
 
 program
   .version(`xigua-cli@${require('../package.json').version}`)
